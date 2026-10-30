@@ -15,8 +15,15 @@ export const ProductoModel = {
         const conditions = [];
 
         if (buscar) {
-            conditions.push("(descripcion LIKE :buscar)"); // ya no hay codigo string
-            params.buscar = `%${buscar}%`;
+            if (!isNaN(Number(buscar))) {
+                // Si es número, buscar por codigo exacto
+                conditions.push("codigo = :buscarNum");
+                params.buscarNum = Number(buscar);
+            } else {
+                // Si es texto, buscar en descripcion
+                conditions.push("descripcion LIKE :buscarText");
+                params.buscarText = `%${buscar}%`;
+            }
         }
         if (unidad) {
             conditions.push("unidad = :unidad");

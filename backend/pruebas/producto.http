@@ -4,14 +4,12 @@
 ### 1. Crear producto (éxito) - ya NO se envía codigo
 POST http://localhost:4100/producto
 Content-Type: application/json
-
 {
   "descripcion": "Tubo PVC 1/2\" x 3m",
   "unidad": "unidad",
   "costo": 1250.50,
   "precio": 1890.00
 }
-
 ### 2. Listar todos los productos
 GET http://localhost:4100/producto
 
@@ -50,7 +48,6 @@ DELETE http://localhost:4100/producto/9999
 ### 11. Crear con datos faltantes (400)
 POST http://localhost:4100/producto
 Content-Type: application/json
-
 {
   "descripcion": "Producto incompleto"
 }
@@ -58,7 +55,6 @@ Content-Type: application/json
 ### 12. Crear con precio menor que costo (400)
 POST http://localhost:4100/producto
 Content-Type: application/json
-
 {
   "descripcion": "Error precio",
   "unidad": "unidad",
