@@ -147,3 +147,10 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# Project specific ignores
+docs/*.docx
+backend/src/src.zip
+backend/pruebas/*.http
+*.zip
+

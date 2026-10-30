@@ -55,7 +55,7 @@ export const ProductoModel = {
      */
     create: async (data) => {
         const sql = `INSERT INTO producto (descripcion, unidad, costo, precio)
-                     VALUES (:descripcion, :unidad, :costo, :precio)`;
+                    VALUES (:descripcion, :unidad, :costo, :precio)`;
         const [result] = await db.query(sql, {
             descripcion: data.descripcion,
             unidad: data.unidad,
