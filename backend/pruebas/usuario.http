@@ -1,0 +1,81 @@
+### Pruebas del módulo Usuario
+### Ejecutar en orden
+
+### 1. Crear usuario (éxito)
+POST http://localhost:4100/usuario
+Content-Type: application/json
+
+{
+  "nombre": "Juan",
+  "apellidos": "Gomez",
+  "email": "juan.gomez@test.com",
+  "telefono": "3112345678",
+  "ciudad": "Medellin",
+  "estado": "activo",
+  "password": "123456"
+}
+
+### 2. Crear usuario con email duplicado (esperado 500 o error según implementación actual)
+POST http://localhost:4100/usuario
+Content-Type: application/json
+
+{
+  "nombre": "Maria",
+  "apellidos": "Lopez",
+  "email": "juan.gomez@test.com",
+  "telefono": "3123456789",
+  "ciudad": "Cali",
+  "estado": "activo",
+  "password": "123456"
+}
+
+### 3. Listar todos los usuarios
+GET http://localhost:4100/usuario
+
+### 4. Obtener usuario por ID
+GET http://localhost:4100/usuario/1
+
+### 5. Obtener usuario por ID inexistente (404)
+GET http://localhost:4100/usuario/9999
+
+### 6. Actualizar usuario
+PUT http://localhost:4100/usuario/1
+Content-Type: application/json
+
+{
+  "nombre": "Juan Carlos",
+  "apellidos": "Gomez",
+  "email": "juan.gomez@test.com",
+  "telefono": "3112345678",
+  "ciudad": "Medellin",
+  "estado": "activo",
+  "password": "123456"
+}
+
+### 7. Eliminar usuario (204)
+DELETE http://localhost:4100/usuario/3
+
+### 8. Eliminar usuario inexistente (404)
+DELETE http://localhost:4100/usuario/9999
+
+### 9. Crear usuario con datos faltantes (400)
+POST http://localhost:4100/usuario
+Content-Type: application/json
+
+{
+  "nombre": "Incompleto"
+}
+
+### 10. Crear usuario con email inválido (400)
+POST http://localhost:4100/usuario
+Content-Type: application/json
+
+{
+  "nombre": "Test",
+  "apellidos": "Email",
+  "email": "no-es-email",
+  "telefono": "3000000000",
+  "ciudad": "Bogota",
+  "estado": "activo",
+  "password": "123456"
+}
